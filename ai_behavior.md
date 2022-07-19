@@ -19,25 +19,24 @@ Since I do not wish to utilize machine learning and instead focus on algorithms,
 Simple will cover behaviors in which the player makes very simple decisions and will only call Liar if the chances are incredibly low.
 
 #### Raise Count
-Raise Count behavior will have the CPU player always raise the count of the current face of the bet. 
-
-If the chance of said bet has less than 10% chance of being True, then instead they will: raise the face, and reset the count to 1.
-
-This player will call liar if the previous bet has less than a 5% chance of being True.
+> Raise Count behavior will have the CPU player always raise the count of the current face of the bet. 
+>
+> If the chance of said bet has less than 10% chance of being True, then instead they will: raise the face, and reset the count to 1.
+> 
+> This player will call liar if the previous bet has less than a 5% chance of being True.
 
 #### Raise Face
-Raise Face effectively works the same as raise count, however instead of always raising the count, they will instead raise the face by one, and keep the count.
-
-If the face is six, then they will simply increase the count by one.
-
-This player will call liar only when it can no longer raise the face, and the previous bet has a 5% chance of being True.
+> Raise Face effectively works the same as raise count, however instead of always raising the count, they will instead raise the face by one, and keep the count.
+> 
+> If the face is six, then they will simply increase the count by one.
+> 
+> This player will call liar only when it can no longer raise the face, and the previous bet has a 5% chance of being True.
 
 #### Notes
-I could perhaps give some pathology to this behavior by modifying how much they raise the count by (a more aggressive player increasing the count by a higher amount or through an educated guess.)
+> I could perhaps give some pathology to this behavior by modifying how much they raise the count by (a more aggressive player increasing the count by a higher amount or through an educated guess.)
 
 ### Calculating
-
-Calculating Players will utilize statistical analysis in order to raise the ante, or call the previous player a liar.
+> Calculating Players will utilize statistical analysis in order to raise the ante, or call the previous player a liar.
 
 #### ...
 

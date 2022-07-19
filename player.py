@@ -5,7 +5,7 @@
 from random import randrange
 
 BEHAVIORS = []
-AFFIRMATIVES = ['y', 'yes']
+AFFIRMATIVES = ['y', 'yes', 'c', 'confirm']
 NEGATIVES = ['n', 'no']
 BETS = ['b', 'bet', 'make bet']
 CALLS = ['l', 'c', 'liar', 'call', 'call liar', 'call a liar', 'make call']
@@ -148,7 +148,10 @@ class Player:
                 response = input('>> ').lower().strip()
 
                 if response in AFFIRMATIVES:
-                    return action_
+                    if action_ in BETS:
+                        return 'bet'
+                    else:
+                        return 'call'
                 elif response in NEGATIVES:
                     action_ = None
                     valid_action = False
@@ -158,11 +161,71 @@ class Player:
             print()
 
     def make_bet(self, bet):
-        """
-        player makes their bet. a player's bet must follow rule set 1 for Liar's Dice:
-            - the player may bid a higher quantity of any particular face
-            - the player may bid same quantity of a higher face (allowing a player to "re-assert" a face value they
-                believe prevalent if another player increased the face value on their bid)
-        :return: new_bet / {"face": int, "count": int} / the new player's bet
-        """
-        pass
+        def cpu_make_bet():
+            pass
+
+        def player_make_bet():
+            """
+                        player makes their bet. a player's bet must follow rule set 1 for Liar's Dice:
+                            - the player may bid a higher quantity of any particular face
+                            - the player may bid same quantity of a higher face (allowing a player to "re-assert" a face
+                                value they believe prevalent if another player increased the face value on their bid)
+                        :return: new_bet / {"face": int, "count": int} / the new player's bet
+            """
+            def set_face():
+                def face_warning():
+                    print('Please enter a digit between 1 and 6.')
+
+                while True:
+                    try:
+                        return int(input('>> Face: '))
+                    except ValueError:
+                        face_warning()
+
+            def set_count():
+                def count_warning_value_error():
+                    print('Please enter some whole number using digits.')
+
+                def count_warning():
+                    print(
+                        '- The player may bid a higher quantity of any particular face.',
+                        '- The player may bid same quantity of a higher face.', sep='\n'
+                    )
+                    display_bets()
+
+                while True:
+                    try:
+                        new_count = int(input('>> Count: '))
+                        if new_count > bet['count']:
+                            return new_count
+                        elif new_count == bet['count']:
+                            if face > bet['face']:
+                                return new_count
+                            else:
+                                count_warning()
+                        else:
+                            count_warning()
+                    except ValueError:
+                        count_warning_value_error()
+
+            def display_bets():
+                print(f'Previous Bet | Face: {bet["face"]}, Count: {bet["count"]}')
+                print(f'Your Bet | Face: {face}, Count: {count}', end='\n\n')
+
+            while True:
+                print('Please place your bet.')
+                face = set_face()
+                count = set_count()
+
+                display_bets()
+                bet_set = input('>> Confirm: ')
+
+                if bet_set in AFFIRMATIVES:
+                    return {'face': face, 'count': count}
+                elif bet_set not in NEGATIVES:
+                    print('Invalid option.')
+
+        if self.cpu:
+            cpu_make_bet()
+        else:
+            player_make_bet()
