@@ -23,6 +23,3 @@ This game will be utilizing the first rule set:
 > The player may bid a higher quantity of any particular face, or the same quantity of a higher face (allowing a player to "re-assert" a face value they believe prevalent if another player increased the face value on their bid).
 
 Wikipedia contributors. (2022, March 22). Liar's dice. In Wikipedia, The Free Encyclopedia. Retrieved 20:48, July 19, 2022, from https://en.wikipedia.org/w/index.php?title=Liar%27s_dice&oldid=1078648692
-#� �e�l�i�a�s�e�r�a�p�h�i�m�.�g�i�t�h�u�b�.�i�o�
-�
-�
